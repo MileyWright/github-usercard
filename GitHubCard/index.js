@@ -2,7 +2,7 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
-
+const cardContainer = document.querySelector('.cards');
 axios.get('https://api.github.com/users/MileyWright')
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
@@ -15,6 +15,12 @@ axios.get('https://api.github.com/users/MileyWright')
 /* Step 4: Pass the data received from Github into your function, 
            create a new component and add it to the DOM as a child of .cards
 */
+  // .then(response => {
+  //   console.log(response)
+  //   response.data.forEach(() => {
+  //     card.appendChild(cardCreator(items));
+  //   });
+  // });
 
 /* Step 5: Now that you have your own card getting added to the DOM, either 
           follow this link in your browser https://api.github.com/users/<Your github name>/followers 
@@ -45,8 +51,13 @@ const followersArray = [];
     <p>Bio: {users bio}</p>
   </div>
 </div>
-
 */
+
+function cardCreator(items) {
+  const card = document.createElement('div');
+  const image = document.createElement('img');
+  const cardInfo = document.createElement('div');
+}
 
 /* List of LS Instructors Github username's: 
   tetondan
