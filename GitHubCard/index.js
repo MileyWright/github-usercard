@@ -27,7 +27,7 @@
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -109,7 +109,23 @@ function cardCreator(user) {
     console.log( 'error!')
   })
 
+  const followersArray = [
+    'tetondan',
+    'dustinmyers',
+    'justsml',
+    'luishrd',
+    'bigknell',
+  ];
   
+  followersArray.forEach((user) => {
+    axios.get(`https://api.github.com/users/${user}`)
+      .then(((result) => {
+        cardCreatorMVP(result);
+      }))
+      .catch((error) => {
+        console.log(error);
+      });
+  });
     
  
 
