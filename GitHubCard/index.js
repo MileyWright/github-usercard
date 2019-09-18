@@ -60,6 +60,7 @@ function cardCreator(user) {
   const followers = document.createElement('p');
   const following = document.createElement('p');
   const bio = document.createElement('p');
+  const graph = document.createElement('div')
 
   card.appendChild(image);
   card.appendChild(cardInfo);
@@ -72,10 +73,14 @@ function cardCreator(user) {
   cardInfo.appendChild(following);
   cardInfo.appendChild(bio);
 
+  // graph.appendChild(card);
+
   card.classList.add('card');
   cardInfo.classList.add('card-info');
   name.classList.add('name');
   username.classList.add('username');
+  graph.classList.add('.calendar');
+
 
   image.src = user.data.avatar_url;
   name.textContent = user.data.name;
@@ -104,6 +109,15 @@ function cardCreator(user) {
  .then(response => {
     console.log(response)
     cardCreator(response)
+     //Stretch Graph -- begin
+     const calendarDiv = document.createElement("div");
+     cards.appendChild(calendarDiv);
+ 
+     calendarDiv.classList.add("calendar");
+ 
+     new GitHubCalendar(".calendar", "MileyWright");
+     //Stretch Graph -- end
+ 
   })
   .catch(response => {
     console.log( 'error!')
@@ -120,7 +134,8 @@ function cardCreator(user) {
   followersArray.forEach((user) => {
     axios.get(`https://api.github.com/users/${user}`)
       .then(((result) => {
-        cardCreatorMVP(result);
+        cardCreator(result);
+        
       }))
       .catch((error) => {
         console.log(error);
